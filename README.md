@@ -1,10 +1,16 @@
 # IoTWorkshop
 This will be a repository of all the sample programs I use for the IoT workshop
 
+# Procedure to follow
+1. Istall Arduino IDE and add board ESP8266 from Boards Manager.
+2. Install CH340G Driver
+3. Install library support for Blynk
+4. Edit the program as per your configuration settings and Program the device.
+5. Enjoy !
 
 # Setting up Arduino IDE for Programming NodeMCU, Wemos or any other ESP basd devices.
 
-1. Download Arduino IDE.
+1. Download Arduino IDE from https://www.arduino.cc/en/Main/Software and install it on your system.
 2. Open you IDE and click on "File -> Preferences".
 3. In  "Additional Boards Manager URLs" add this line and click on "OK":
   "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
@@ -30,19 +36,25 @@ This will be a repository of all the sample programs I use for the IoT workshop
 3. Click on the first link "Adafruit-BMP085-Library" and install. 
 4. Restart your Arduino IDE for the changes to take effect. 
 
-# Programming the device
+# Programming the device for WEMOSD1MiniBoard
 
 1. Connect the device.
 2. Open Arduino IDE
-3. Go to "Tools -> Board -> Select teh board which you're using".
+3. Go to "Tools -> Board -> Select teh board which you're using" - WemosD1MiniR1 in this case.
 4. Select "Flash size -> 4M (1M SPIFFS)"
 5. CPU Frequency -> "80 MHz"
 6. Upload Speed -> "115200"
 7. Select the COM Port which appears on the list "COMX"
 
+# Programming the device for NodeMCUBoard
 
-
-
+1. Connect the device.
+2. Open Arduino IDE
+3. Go to "Tools -> Board -> Select teh board which you're using". - NOdeMCU1.0 in this case
+4. Select "Flash size -> 4M (1M SPIFFS)"
+5. CPU Frequency -> "80 MHz"
+6. Upload Speed -> "9600"
+7. Select the COM Port which appears on the list "COMX"
 
 
 
