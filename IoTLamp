@@ -1,0 +1,30 @@
+/*************************************************************
+  This is a very basic, bare minimum program for making IoT Lamp using a NodeMCU or Wemos 
+  or any other esp8266 based wifi board, using Blynk app for getting the control signals over internet.
+
+ *************************************************************
+  Note : You need to change the WiFi ssid, passwords, and Blynk auth token
+  which was mailed to your email id when you created the new project.
+ *************************************************************/
+ 
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+
+// You should get Auth Token in the Blynk App.
+// Go to the Project Settings (nut icon).
+char auth[] = "44870394357a48bbac945u2hj4c46yv6eaadc00cab";  //IOTLamp Auth key
+// Your WiFi access point credentials.
+// Set password to "" for open networks.
+char ssid[] = "wifissid";
+char pass[] = "password";
+
+void setup()
+{
+  //digitalWrite(D1,HIGH);  //use this for low level triggered relay module
+  Blynk.begin(auth, ssid, pass);
+}
+
+void loop()
+{
+  Blynk.run();
+}
