@@ -1,0 +1,53 @@
+#Weather Monitoring Station
+
+#include <Wire.h>
+#include <Adafruit_BMP085.h>
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+
+// You should get Auth Token in the Blynk App.
+// Go to the Project Settings (nut icon).
+char auth[] = "448703239yhgy4357a48bbac945u223hj4c46yv6eaadc00cab";  //IOTWeatherMonitoringStation Auth key
+// Your WiFi access point credentials.
+// Set password to "" for open networks.
+char ssid[] = "wifissid";
+char pass[] = "password";
+
+/*************************************************** 
+  These sensors use I2C protocol to communicate, 
+  2 pins are required for interfacing
+ ****************************************************/
+
+// Connect VCC of the BMP 180 sensor to 3.3V (NOT 5.0V!)
+// Connect GND to Ground
+// Connect SCL to i2c clock - D1 on wemos D1 mini (yellow on the demo)
+// Connect SDA to i2c data - D2 on wemos D1 mini (green on the demo)
+
+Adafruit_BMP085 bmp;
+
+void setup() {
+  Blynk.begin(auth, ssid, pass);
+  Serial.begin(9600);
+  if (!bmp.begin()) {
+	Serial.println("A valid BMP180 sensor cannot be found, please check the wiring and try again!");
+	while (1) {}
+  }
+}
+  
+void loop() {
+    Blynk.run();
+    Serial.print("Temperature = ");
+    Serial.print(bmp.readTemperature());
+    Serial.println(" *C");
+    temperature = bmp.readTemperature();
+    Blynk.virtualWrite(V1, temperature)
+    
+    Serial.print("Pressure = ");
+    Serial.print(bmp.readPressure());
+    Serial.println(" Pa");
+    pressure = bmp.readPressure();
+    Blynk.virtualWrite(V2, pressure)
+
+    Serial.println();
+    delay(500);
+}
